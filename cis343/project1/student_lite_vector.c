@@ -34,14 +34,16 @@ void* lv_get(lite_vector* vec, size_t index){
 
     printf("Vector.c address of head %p \n",vec->data);
 
-    if(index == 0)
-        return vec->data;
-
+    if(index == 0){
+        void* tmp;
+        tmp = vec->data + 0;
+        return tmp;// ++;
+    }
     void** tmp;
-    tmp=vec->data + 1 * sizeof(vec->data);
-    // for(int i=1;i< index;++i){
-    //     tmp=vec->data + i * sizeof(vec->data);
-    // }
+
+    for(int i=1;i< index;++i){
+        tmp=vec->data + i * sizeof(vec->data);
+    }
     return tmp;
 
 }
@@ -64,7 +66,12 @@ static bool lv_resize(lite_vector* vec){
 }
 
 bool lv_append(lite_vector* vec, void* element){
-    vec->data=element;
+    // vec->data=element;
+
+
+   *( &(vec->data)+ sizeof(element) *vec->length)=element;
     vec->length++;
+
+
 
 }

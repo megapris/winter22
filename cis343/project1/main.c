@@ -13,14 +13,15 @@ int main(int argc, char** argv){
 		printf("Main Array address: %p\n", (x + i * sizeof(int*)));
 		lv_append(lv, &(x[i]));
 	};
-	x[1]=200;
+	x[1]=500;
+	lv_append(lv,&(x[1]) );
 
 
-	// for(int i=0; i<2; ++i){
-	// 	int * p = lv_get(lv, i);
-	// 	int val = *p;
-	// 	printf("%i\t", val);
-	// }
+	for(int i=0; i<2; ++i){
+		int * p = lv_get(lv, i);
+		int val = *p;
+		printf("%i\t", val);
+	}
 
 	// lite_vector * lv2 = lv_new_vec(sizeof(char*));
 	// lv_append(lv2, "Mr. ");
