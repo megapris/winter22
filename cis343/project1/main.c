@@ -8,27 +8,30 @@ int main(int argc, char** argv){
 	int x[1000];
 
 
-	for(int i=0; i<1; ++i) {
-		x[i] = 127;
-		printf("Main Array address: %p\n", (x + i * sizeof(int*)));
+	for(int i=0; i<1000; ++i) {
+		x[i] = i;
+		// printf("array address: %p\n", (x + i * sizeof(int*)));
 		lv_append(lv, &(x[i]));
 	};
-	x[1]=500;
-	lv_append(lv,&(x[1]) );
 
 
-	for(int i=0; i<2; ++i){
+
+	for(int i=0; i<1000; ++i){
 		int * p = lv_get(lv, i);
 		int val = *p;
-		printf("%i\t", val);
+		printf("val: %i\n", val);
 	}
 
-	// lite_vector * lv2 = lv_new_vec(sizeof(char*));
-	// lv_append(lv2, "Mr. ");
-	// lv_append(lv2, "W. ");
-	// lv_append(lv2, "says ");
-	// lv_append(lv2, "hi!");
-	// printf("%s\n", (char*)lv_get(lv2, 0));
+	lite_vector * lv2 = lv_new_vec(sizeof(char*));
+	lv_append(lv2, "Mr. ");
+	lv_append(lv2, "W. ");
+	lv_append(lv2, "says ");
+	lv_append(lv2, "hi!");
+	printf("%s\n", (char*)lv_get(lv2, 0));
+	printf("%s\n", (char*)lv_get(lv2, 1));
+	printf("%s\n", (char*)lv_get(lv2, 2));
+	printf("%s\n", (char*)lv_get(lv2, 3));
+	
 }
 
 
